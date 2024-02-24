@@ -1,6 +1,6 @@
 
 
-const tasks = [
+let tasks = [
     {
         _id: 1,
         name: "Faire les courses",      // string
