@@ -7,6 +7,7 @@ window.onload = () => {
   let currentTask = undefined
  var viewTab = document.querySelector('#tables tbody')
  var viewImg = document.querySelector('.imageIllus')
+ const imgPreview = document.getElementById('preview');
 
   const taskModal = new bootstrap.Modal(document.getElementById('taskModal'));
   const alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
@@ -17,12 +18,22 @@ window.onload = () => {
   const handleEdit = (event) => {
     const id = event.target.dataset.id
     currentTask = tasks.find(t => t._id == id)
+    
     form.elements['name'].value = currentTask.name
     form.elements['description'].value = currentTask.description
     form.elements['status'].value = currentTask.status
-    form.elements['image'].file = currentTask.imageUrl
+    url = currentTask.imageUrl
     
-    console.log({ currentTask });
+    const file = new File([""], currentTask.imageUrl, { type: "image/jpeg" });
+const fileList = new DataTransfer(); // Créer un objet DataTransfer qui agira comme un FileList
+fileList.items.add(file); // Ajouter le fichier à l'objet DataTransfer
+
+// Vous pouvez accéder à l'objet FileList à partir de l'objet DataTransfer
+form.elements['image'].files = fileList.files;
+    
+    imgPreview.src = currentTask.imageUrl
+    console.log(form.elements['image'].files);
+  
     
     taskModal.show()
 
@@ -47,7 +58,7 @@ window.onload = () => {
     // Fonction appelée lorsque la lecture est terminée
     reader.onload = function(event) {
         url = event.target.result; // URL de l'image
-        const imgPreview = document.getElementById('preview');
+        
         imgPreview.src = url; // Affiche l'image dans l'élément <img>
     };
 
@@ -65,8 +76,6 @@ document.getElementById('imageIllustr').addEventListener('change', handleImageSe
     console.log('hello');
     const id = event.target.dataset.id
     currentTask = tasks.find(t => t._id == id)
-    console.log(currentTask.imageUrl);
-    console.log(viewTab);
     viewTab.innerHTML =  `
     <tr>
       <th scope="row">${id}</th>
@@ -127,6 +136,9 @@ document.getElementById('imageIllustr').addEventListener('change', handleImageSe
     })
     addButtons.onclick = ()=>{
       form.reset()
+      url = ""
+      imgPreview.src = ""
+      currentTask = undefined
       taskModal.show()
   }
 
@@ -152,6 +164,9 @@ document.getElementById('imageIllustr').addEventListener('change', handleImageSe
     if (!todo.status) {
       errors.status = 'status is required'
     }
+    // if(!todo.image){
+    //   errors.image = "veuillez entrer une image"
+    // }
     // A faire  
     return errors
   }
@@ -184,8 +199,9 @@ document.getElementById('imageIllustr').addEventListener('change', handleImageSe
     if (index !== -1) {
       tasks[index] = { ...tasks[index], ...todo, updated_at: new Date() }
     }
-    currentTask = undefined
+    // currentTask = undefined
     afficher_list(tasks)
+    
   }
 
   /******************************************** DELETE TODO *********** */
@@ -198,7 +214,7 @@ document.getElementById('imageIllustr').addEventListener('change', handleImageSe
     if(index !== -1){
       tasks.splice(index, 1)
     }
-    currentTask = undefined
+    // currentTask = undefined
  
     // console.log(_id)
     // update 
@@ -237,7 +253,7 @@ document.getElementById('imageIllustr').addEventListener('change', handleImageSe
       description: form.elements['description'].value,
       status: Array.from(form.elements['status']).find((radio) => radio.checked)?.value,
       created_at: new Date(),
-      imageUrl:form.elements['image'].file ,
+      imageUrl:url ,
       updated_at: null
     }
     console.log({newTask});

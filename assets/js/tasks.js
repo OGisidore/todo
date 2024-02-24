@@ -24,7 +24,7 @@ const tasks = [
         name: "Préparer la présentation",  
         description: "Rassembler les informations nécessaires et créer une présentation pour la réunion de lundi.",  
         status: "À faire",      
-        imageUrl: "https://pixabay.com/fr/illustrations/merle-oiseau-chanteur-le-printemps-8584468/",       
+        imageUrl: "https://cdn.pixabay.com/photo/2024/02/20/02/43/blackbird-8584468_1280.jpg",       
         created_at: "2024-02-22T10:45:00",  
         updated_at: null               
     },
@@ -33,7 +33,7 @@ const tasks = [
         name: "Faire de l'exercice",  
         description: "Aller à la salle de sport pendant au moins 30 minutes.", 
         status: "À faire",      
-        imageUrl: "https://pixabay.com/fr/photos/fleur-pivoine-p%C3%A9tales-bloom-8583970/",      
+        imageUrl: "https://cdn.pixabay.com/photo/2023/12/23/22/15/teen-photo-8466399_640.jpg",      
         created_at: "2024-02-22T11:20:00",  
         updated_at: "2024-02-22T17:45:00"   
     }
