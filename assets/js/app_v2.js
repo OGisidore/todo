@@ -18,6 +18,8 @@ window.onload = () => {
   const alertModal = new bootstrap.Modal(document.getElementById('alertModal'));
   const viewModal = new bootstrap.Modal(document.getElementById('viewModal'));
   const SeachForm = document.querySelector(" form#search");
+  var inputSearch = SeachForm.querySelector('input')
+  
   var statusRadions = document.querySelectorAll("#statusForm input");
   var orderRadio  = document.querySelectorAll("#order input")
   
@@ -29,6 +31,7 @@ window.onload = () => {
     event.preventDefault()
     let tag = SeachForm.elements["search"].value.trim()
     currentData = [...tasks]
+    
 
     currentData = currentData.filter((t) => t.name.toLowerCase().search(tag.toLowerCase()) !== -1)
     afficher_list()
@@ -42,27 +45,49 @@ window.onload = () => {
     let tag = event.target.value
     console.log(tag);
     currentData = [...tasks]
+   
     
 
     currentData = currentData.filter((t) => t.status.toLowerCase().search(tag.toLowerCase()) !== -1)
-    afficher_list()
-  }
-
-    const orderFilter =(event) =>{
-      let tag = event.target.value.trim()
+    if(tag === 'Tout'){
+      console.log(tag);
+      tag === 'Tout'
+      console.log(currentData);
       currentData = [...tasks]
-     
-      if(tag === 'desc'){
-        currentData = [...tasks.reverse()]
-        
-      }
-      if(tag === 'asc' ){
-        currentData = [...tasks.reverse()]
-      }
-   
       afficher_list()
 
     }
+    afficher_list()
+  }
+  const orderFilter = (event) => {
+    let tag = event.target.value.trim();
+    currentData = [...tasks];
+
+    if (tag === 'desc') {
+        currentData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    } else if (tag === 'asc') {
+        currentData.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+    }
+
+    afficher_list();
+}
+
+
+    // const orderFilter =(event) =>{
+    //   let tag = event.target.value.trim()
+    //   currentData = [...tasks]
+     
+    //   // if(tag === 'desc'){
+    //   currentData = currentData.forEach((t)=> t.created_at.shor((a,b)=>new Date(b)-new Date(a)))
+        
+    //   // }
+    //   // if(tag === 'asc' ){
+    //   //   currentData = [...tasks.reverse()]
+    //   // }
+   
+    //   afficher_list()
+
+    // }
    const filter_byRadio = ()=>{
     statusRadions.forEach(elem =>{
       elem.onchange = filterItem
@@ -333,6 +358,7 @@ window.onload = () => {
   allow.onclick = handleDeleteTask
   form.onsubmit = handleSubmit
   SeachForm.onsubmit = SearchItem
+  inputSearch.onkeyup = SearchItem
 
 
 
