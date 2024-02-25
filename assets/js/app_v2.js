@@ -1,6 +1,8 @@
 import { initTasks, saveTasks } from "./storage.js";
+// import {ajouterTacheDansIndexedDB,recupererTachesDeIndexedDB} from'./indexDB,js';
 
 window.onload = () => {
+  // recupererTachesDeIndexedDB(tasks)
   tasks = initTasks(tasks);
   var tab = document.querySelector("#table tbody");
   const form = document.querySelector("form#taskForm");
@@ -251,7 +253,8 @@ window.onload = () => {
   const addTodo = (todo) => {
     console.log("========== add todo =============", todo);
     tasks.unshift(todo);
-    saveTasks(tasks);
+    // ajouterTacheDansIndexedDB(tasks);
+    // saveTasks(tasks);
     currentData = [...tasks];
     afficher_list();
   };
@@ -265,6 +268,7 @@ window.onload = () => {
     }
 
     saveTasks(tasks);
+    // ajouterTacheDansIndexedDB(tasks);
     currentData = [...tasks];
     afficher_list();
   };
@@ -274,6 +278,7 @@ window.onload = () => {
   const deleteTodo = (id) => {
     tasks = tasks.filter((t) => t._id !== id);
     saveTasks(tasks);
+    // ajouterTacheDansIndexedDB(tasks);
     currentData = [...tasks];
     afficher_list();
   };
