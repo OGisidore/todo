@@ -72,7 +72,7 @@
                     </div>
                     <div>
                         <input type="radio" name="status"  value="À faire">
-                        <label for="status">A faire </label>
+                        <label for="status">À faire </label>
                         
                     </div>
                    
@@ -130,7 +130,7 @@
                                     autocomplete="off">
                                 <label class="btn btn-outline-secondary" for="btnradio2">En cours</label>
 
-                                <input type="radio" class="btn-check " value="A faire" name="status" id="btnradio3"
+                                <input type="radio" class="btn-check " value="À faire" name="status" id="btnradio3"
                                     autocomplete="off">
                                 <label class="btn btn-outline-secondary" for="btnradio3">À faire</label>
                                 <div class="error error-status text-danger"></div>
@@ -141,7 +141,7 @@
                                 <input class="form-control" type="file" id="imageIllustr" name="imageUrl"
                                     accept="image/*">
                                 <div class="error error-imageUrl text-danger"></div>
-                                <img src="#" alt="preview" id="preview" width="250px">
+                                <img src="#" class="my-3" alt="preview" id="preview" height="150px">
                             </div>
 
                             <div class="py-2 d-flex justify-content-end gap-1">
@@ -175,30 +175,21 @@
             </div>
         </div>
         <div class="modal fade" id="viewModal" tabindex="-1" aria-labelledby="viewTask" aria-hidden="true">
-            <div class="modal-dialog modal-xl">
+            <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                     </div>
-                    <div class="modal-body">
-                        <table class="table table-bordered table-striped" id="tables">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">status</th>
-                                    <th scope="col">created_at</th>
-                                    <th scope="col">updated_at</th>
-                                </tr>
-                            </thead>
+                    <div class=" row modal-body ">
+                        <table class="table table-bordered table-striped col-9" id="tables">
+                           
                             <tbody>
 
 
                             </tbody>
                         </table>
-                        <div class="imageIllus container d-flex justify-content-center">
+                        <div class="imageIllus m-w">
 
                         </div>
                         <div class="py-2 d-flex justify-content-end gap-1">

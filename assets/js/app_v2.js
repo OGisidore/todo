@@ -128,20 +128,32 @@ window.onload = () => {
     const id = event.target.dataset.id;
     currentTask = tasks.find((t) => t._id == id);
     viewTab.innerHTML = `
+    
     <tr>
-      <th scope="row">${id}</th>
+      <th scope="col">Name</th>
       <td>${currentTask.name}</td>
+    </tr>
+    <tr>
+    <th scope="col">Description</th>
       <td>${currentTask.description}</td>
+    </tr>
+    <tr>
+    <th scope="col">status</th>
       <td>${currentTask.status}</td>
+    </tr>
+    <tr>
+    <th scope="col">created_at</th>
       <td>${currentTask.created_at}</td>
+    </tr>
+    <tr>
+    <th scope="col">updated_at</th>
       <td>${currentTask.updated_at}</td>
-     
     </tr>
     
     
     `;
     viewImg.innerHTML = `
-    <img src="${currentTask.imageUrl}" width="150rem">`;
+    <img src="${currentTask.imageUrl}" class="m-w">`;
     viewModal.show();
   };
 

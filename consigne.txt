@@ -1,3 +1,22 @@
 
 1- View Todo
-2- Ajouter l'attribut imageUrl au todo 
+2- Ajouter l'attribut imageUrl au todo <tr>
+      <th scope="col">Name</th>
+      <td>${currentTask.name}</td>
+    </tr>
+    <tr>
+    <th scope="col">Description</th>
+      <td>${currentTask.description}</td>
+    </tr>
+    <tr>
+    <th scope="col">status</th>
+      <td>${currentTask.status}</td>
+    </tr>
+    <tr>
+    <th scope="col">created_at</th>
+      <td>${currentTask.created_at}</td>
+    </tr>
+    <tr>
+    <th scope="col">updated_at</th>
+      <td>${currentTask.updated_at}</td>
+    </tr>
