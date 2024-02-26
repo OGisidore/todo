@@ -98,9 +98,9 @@ window.onload = () => {
   const handleDelete = (event) => {
     console.log("hello");
     const id = event.target.dataset.id;
+    
     currentTask = tasks.find((t) => t._id == id);
-    console.log(currentTask);
-    // deleteTodo(currentTask._id)
+    
     alertModal.show();
   };
 
@@ -254,7 +254,7 @@ window.onload = () => {
     console.log("========== add todo =============", todo);
     tasks.unshift(todo);
     // ajouterTacheDansIndexedDB(tasks);
-    // saveTasks(tasks);
+    saveTasks(tasks);
     currentData = [...tasks];
     afficher_list();
   };
@@ -278,15 +278,22 @@ window.onload = () => {
   const deleteTodo = (id) => {
     tasks = tasks.filter((t) => t._id !== id);
     saveTasks(tasks);
-    // ajouterTacheDansIndexedDB(tasks);
     currentData = [...tasks];
     afficher_list();
   };
   /******************************************** HANDLE DELETE TODO *********** */
 
   const handleDeleteTask = () => {
+    // if (currentTask) {
+    //   // Vérifiez si une tâche est actuellement sélectionnée
+    //   deleteTodo(currentTask._id); // Appel de la fonction deleteTodo avec l'ID de la tâche actuelle
+    //   alertModal.hide();
+    // } else {
+    //   console.error('Aucune tâche sélectionnée pour la suppression');}
+    // // }
+   
     deleteTodo(currentTask._id);
-    console.log("hello");
+    
     afficher_list(tasks);
     alertModal.hide();
   };
